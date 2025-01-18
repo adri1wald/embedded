@@ -131,13 +131,22 @@ P1
 
 ## What we need to do?
 
-TODO
+P0.13
+- Offset: 0x734
+- Write: 0x01 << 0
+    - This sets the pin to output with standard push-pull
+
+Out
+- Offset: 0x504
+- Write: 0x01 << 13
+
+
 
 <!-- See ./datasheet:325 for offsets -->
 
 # Don't push me
 
-## WHere are the buttons?
+## Where are the buttons?
 
 Push buttons
 - BUTTON1 = SW1 = P0.11
