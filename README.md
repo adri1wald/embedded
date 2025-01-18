@@ -140,7 +140,11 @@ Out
 - Offset: 0x504
 - Write: 0x01 << 13
 
+## Excerise left to the reader
 
+Make the LEDs at P0.13-P0.16 go around in a circle.
+
+> Hint: you may want to use the OUTSET and OUTCLR registers.
 
 <!-- See ./datasheet:325 for offsets -->
 
