@@ -5,6 +5,7 @@ Board: NRF52840-DK
 Chip: Cortex-M4 32-bit processor with FPU
 
 Data sheet: [Local PDF](./datasheet.pdf)
+Board documentation: [Local PDF](./board.pdf)
 
 # Setup
 
@@ -18,13 +19,13 @@ rustup target add thumbv7em-none-eabihf
 
 Flash:
 
-- Start: 0x00000000 <!-- Source: page 23 of the data sheet -->
-- Length: 1024K <!-- Source: page 2 of the data sheet -->
+- Start: 0x00000000 <!-- Source: ./datasheet:23 of the data sheet -->
+- Length: 1024K <!-- Source: ./datasheet:2 of the data sheet -->
 
 RAM: 256K
 
-- Start: 0x20000000 <!-- Source: page 23 of the data sheet -->
-- Length: 256K <!-- Source: page 2 of the data sheet -->
+- Start: 0x20000000 <!-- Source: ./datasheet:23 of the data sheet -->
+- Length: 256K <!-- Source: ./datasheet:2 of the data sheet -->
 
 ```bash
 cargo add cortex-m-rt
@@ -63,7 +64,7 @@ Flash the chip:
 cargo embed
 ```
 
-## Talk to me, goose!
+# Talk to me, goose!
 
 ```bash
 cargo add rtt-target 
@@ -89,3 +90,58 @@ fn main() -> ! {
 }
 
 ```
+
+# Shine bright like a diamond
+
+## What connects to the LEDs?
+
+<!-- N.B. this information is _not_ found in the datasheet because it covers the nRF52840 chip, not the nRF52840-DK board -->
+
+<!-- Source: ./board.pdf:5 -->
+
+- LED1 (green) = P0.13
+- LED2 (green) = P0.14
+- LED3 (green) = P0.15
+- LED4 (green) = P0.16
+
+## GPIO registers
+
+<!--
+- Look for GPIO section in table of contents
+- Found 6.9 GPIO - General purpose input/output at ./datasheet:322
+    - Registers at ./datasheet:324
+    - Pin assigments at ./datasheet:926
+-->
+
+<!-- Source: ./datasheet:324 -->
+
+GPIO
+- Base address: 0x50000000
+- Description: General purpose input and output
+
+P0
+- Base address: 0x50000000
+- Description: General purpose input and output, port 0
+- Ports: P0.00 to P0.31
+
+P1
+- Base address: 0x50000300
+- Description: General purpose input and output, port 1
+- Ports: P1.00 to P1.15
+
+## What we need to do?
+
+TODO
+
+<!-- See ./datasheet:325 for offsets -->
+
+# Don't push me
+
+## WHere are the buttons?
+
+Push buttons
+- BUTTON1 = SW1 = P0.11
+- BUTTON2 = SW2 = P0.12
+- BUTTON3 = SW3 = P0.24
+- BUTTON4 = SW4 = P0.25
+- BOOT = SW5 = boot/reset
