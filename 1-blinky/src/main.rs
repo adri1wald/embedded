@@ -63,15 +63,15 @@ fn main() -> ! {
         pin_index = (pin_index + 1) % 4;
 
         p.P0.outclr.write(|w| unsafe { w.bits(pin.bitmask()) });
+
         wait();
 
         p.P0.outset.write(|w| unsafe { w.bits(pin.bitmask()) });
-        wait();
     }
 }
 
 fn wait() {
-    for _ in 0..200_000 {
+    for _ in 0..50_000 {
         nop();
     }
 }
